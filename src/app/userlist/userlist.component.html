@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="crud-table d-flex justify-content-between">
+        <div class="form-inline pull-left">
+            <button class="btn btn-success" (click)="addUser()">
+                <i class="fa-solid fa-plus fs-3"></i> 增加使用者
+            </button>
+        </div>
+        <div class="form-inline pull-right">
+            Search by name:
+            <div class="form-group">
+                <input type="text" placeholder="Type name to search" class="form-control search_btn">
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Salary</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="from_demo text-left">
+            <tr *ngFor="let user of users; let i = index;">
+                <td>{{user.name}}</td>
+                <td>{{user.country}}</td>
+                <td>{{user.salary | number}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="editUser(i)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button>
+                </td>
+            </tr>
+            <tr class="text-left">
+                <td colspan="2">
+                    <b>Total</b>
+                </td>
+                <td  *ngIf="users.length > 0">{{totalSalary | number}}</td>
+                <td *ngIf="users.length === 0">0</td>
+                <td colspan="3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="crude-form__wrapper" *ngIf="showAddUserForm">
+        <h3>{{isEditing ? '編輯使用者' : '新增使用者'}}</h3>
+        <form [formGroup]="userForm"  (ngSubmit)="isEditing ? updateUser() : submitAddUserForm()">
+            <div class="form-group">
+                <label for="editName">Name</label>
+                <input id="editName" type="text" formControlName="name" placeholder="Edit name" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editCounty">Country</label>
+                <input id="editCounty" type="text" formControlName="country" placeholder="Edit country" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editSalary">Salary</label>
+                <input id="editSalary" type="number" formControlName="salary" placeholder="Edit salary" min="1" required class="form-control">
+            </div>
+            <div class="form-group mb-3">
+                <label for="editEmail">Email</label>
+                <input id="editEmail" type="email" formControlName="email" placeholder="Edit email" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary me-3">Save change</button>
+            <button type="button" class="btn btn-primary" (click)="showAddUserForm=false">Cancel</button>
+        </form>
+    </div>
+</div>
