@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// 引用 service 共用資料
+import { UserService } from './user.service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
  
   ],
-  providers: [],
+  providers: [UserService], // 將 UserService 加入 providers 中
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
