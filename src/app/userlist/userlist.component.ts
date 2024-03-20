@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 // 引入 reactiveFormsModule 元件
 import { FormGroup, FormControl } from '@angular/forms';
 
+
+
 @Component({
  selector: 'app-userlist',
  templateUrl: './userlist.component.html',
  styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
- users: any[] = [];
- filteredUsers:any[]=[]; //新增一個陣列來存儲過濾後的使用者，這樣做是為了方便進行搜尋過濾
+ users: any[] = [
+   { name: '小淇', country: '彰化', salary: 1000, email: 'user1@example.com' },
+   { name: '阿偉', country: '新莊', salary: 2000, email: 'user2@example.com' },
+   { name: '67', country: '大陸', salary: 3000, email: 'user3@example.com' }
+ ];
  showAddUserForm: boolean = false; //定義一個布林值變數來控制是否顯示新增使用者的表單
  userForm!: FormGroup; //定義一個 FormGroup 變數來存儲使用者表單的資料，使用 ! 表示這個變數一定會被初始化
  isEditing:boolean = false; //定義一個布林值變數來標記是否正在編輯使用者資料
@@ -87,4 +92,7 @@ showAllUsers() {
   // 重新計算總薪水
   this.calculateTotalSalary();
 }
+
 }
+
+
