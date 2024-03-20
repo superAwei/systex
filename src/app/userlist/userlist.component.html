@@ -9,8 +9,7 @@
             <div class="form-inline pull-right">
                 Search by name:
                 <div class="form-group">
-                   
-                    <input type="text" placeholder="Type name to search" class="form-control search_btn">
+                    <input type="text" placeholder="Type name to search" class="form-control search_btn" [(ngModel)]="searchTerm" (keyup.enter)="searchUsers()">
                 </div>
             </div>
         </div>
@@ -54,20 +53,36 @@
                 <div class="form-group">
                     <label for="editName">Name</label>
                     <input id="editName" type="text" formControlName="name" placeholder="Edit name" required class="form-control">
+                    <!-- 顯示名稱必填錯誤訊息 -->
+                    <div *ngIf="userForm.get('name') && userForm.get('name')?.invalid && userForm.get('name')?.touched" class="alert alert-danger mt-3">
+                        Name is required.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="editCounty">Country</label>
                     <input id="editCounty" type="text" formControlName="country" placeholder="Edit country" required class="form-control">
+                    <!-- 使用安全導航運算符避免可能的錯誤 -->
+                    <div *ngIf="userForm.get('country')?.invalid && userForm.get('country')?.touched" class="alert alert-danger mt-3">
+                        Country is required.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="editSalary">Salary</label>
                     <input id="editSalary" type="number" formControlName="salary" placeholder="Edit salary" min="1" required class="form-control">
+                    <!-- 使用安全導航運算符避免可能的錯誤 -->
+                    <div *ngIf="userForm.get('salary')?.invalid && userForm.get('salary')?.touched" class="alert alert-danger mt-3">
+                        Salary is required and must be a positive number.
+                    </div>
                 </div>
                 <div class="form-group mb-3">
                     <label for="editEmail">Email</label>
                     <input id="editEmail" type="email" formControlName="email" placeholder="Edit email" required class="form-control">
+                    <!-- 使用安全導航運算符避免可能的錯誤 -->
+                    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="alert alert-danger mt-3">
+                        Please enter a valid email address.
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary me-3">Save change</button>
+                <button type="submit" class="btn btn-primary me-3" [disabled]="userForm.invalid">Save change</button>
                 <button type="button" class="btn btn-primary" (click)="showAddUserForm=false">Cancel</button>
             </form>
         </div>

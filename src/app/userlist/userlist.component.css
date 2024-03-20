@@ -1,0 +1,6 @@
+/* 當按鈕被禁用時，將滑鼠指標設置為禁止符號 */
+.btn:disabled {
+    cursor: not-allowed;
+    pointer-events: auto;
+}
+

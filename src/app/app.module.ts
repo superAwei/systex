@@ -15,10 +15,10 @@ import { UserService } from './user.service';
     UserlistComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
  
   ],
   providers: [UserService], // 將 UserService 加入 providers 中
