@@ -8,6 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // 引用 service 共用資料
 import { UserService } from './user.service';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+// 香水電商
+import { PerfumeUIComponent } from './perfume-ui/perfume-ui.component';
+import { HeaderComponent } from './perfume-ui/header/header.component';
+import { FooterComponent } from './perfume-ui/footer/footer.component';
 
 
 
@@ -16,6 +20,9 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AppComponent,
     UserlistComponent,
     SearchBarComponent,
+    PerfumeUIComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
