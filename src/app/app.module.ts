@@ -9,10 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    UserlistComponent
+    UserlistComponent,
   ],
   imports: [
     BrowserModule,
