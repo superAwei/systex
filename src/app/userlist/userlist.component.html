@@ -8,12 +8,8 @@
                     增加使用者
                     </button>
                 </div>
-                <div class="form-inline pull-right">
-                    Search by name:
-                    <div class="form-group">
-                        <input type="text" placeholder="Type name to search" class="form-control search_btn" [(ngModel)]="searchTerm" (keyup.enter)="searchUsers()">
-                    </div>
-                </div>
+                <!-- 把下方搜尋功能用成組件 -->
+                <app-search-bar (search)="searchUsers($event)"></app-search-bar>
             </div>
             <table class="table table-striped">
                 <thead>

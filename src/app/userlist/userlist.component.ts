@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 //把共用資料也導入進來
 import { UserService } from '../user.service';
 
+
 // 建立元件
 @Component({
   selector: 'app-userlist',
@@ -49,12 +50,12 @@ export class UserlistComponent implements OnInit {
 
 
   // 新增搜尋使用者方法
-  searchUsers() {
-   if (this.searchTerm.trim() === '') {
+  searchUsers(searchTerm:string):void {
+   if (searchTerm.trim() === '') {
      this.loadUsers(); // 如果搜尋關鍵字為空，載入所有使用者
    } else {
      this.users = this.userService.getUsers().filter(user =>
-       user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) // 使用姓名進行大小寫不敏感的部分匹配
+       user.name.toLowerCase().includes(searchTerm.toLowerCase()) // 使用姓名進行大小寫不敏感的部分匹配
      );
      this.calculateTotalSalary(); // 重新計算總薪水
    }

@@ -7,6 +7,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // 引用 service 共用資料
 import { UserService } from './user.service';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 
@@ -14,6 +15,7 @@ import { UserService } from './user.service';
   declarations: [
     AppComponent,
     UserlistComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
