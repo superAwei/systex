@@ -1,6 +1,9 @@
-<div class="form-inline pull-right">
-    Search by name:
+<div class="form-inline pull-right fw-bold text-uppercase d-flex align-items-center">
+    <label for="form_input">Search by name </label>&nbsp;&nbsp;
     <div class="form-group">
-        <input type="text" placeholder="Type name to search" class="form-control search_btn" [(ngModel)]="searchTerm" (keyup.enter)="searchUsers()">
+        <input id="form_input" type="text" placeholder="Type name to search" class="form-control search_btn" 
+        [(ngModel)]="searchTerm"
+        (input)="searchUsers()"
+        (keyup.enter)="searchUsers()">
     </div>
 </div>

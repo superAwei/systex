@@ -1,8 +1,9 @@
 //把會使用到的模組導入
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 //把共用資料也導入進來
 import { UserService } from '../user.service';
+;
 
 
 // 建立元件
@@ -26,7 +27,7 @@ export class UserlistComponent implements OnInit {
 
 
   //類別的建構函式，用於初始化類別的實例。在這裡來注入了 UserService 服務作為這個元件的資料來源或叫做依賴。
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,) { }
 
 
   //ngOnInit() 方法是 Angular 的生命周期鉤子之一，在元件初始化後立即調用。在這裡，我們初始化使用者表單，然後載入使用者資料。
@@ -37,7 +38,7 @@ export class UserlistComponent implements OnInit {
       salary: new FormControl('',[Validators.required, Validators.min(1)]),// 添加必填和最小值驗證器
       email: new FormControl('',[Validators.required, Validators.email])// 添加必填和 email 格式驗證器
     });
-    this.loadUsers();
+    this.loadUsers();  //載入使用者資料
   }
 
   //loadUsers() 方法用於從 UserService 中獲取使用者資料並更新到 users 變數中，然後計算總薪水。
@@ -49,8 +50,12 @@ export class UserlistComponent implements OnInit {
 
 
 
+
   // 新增搜尋使用者方法
   searchUsers(searchTerm:string):void {
+    // 新增這段
+     // 將搜索詞保存在屬性中以供使用
+  // this.searchTerm = searchTerm;
    if (searchTerm.trim() === '') {
      this.loadUsers(); // 如果搜尋關鍵字為空，載入所有使用者
    } else {
@@ -66,15 +71,21 @@ export class UserlistComponent implements OnInit {
     this.showAddUserForm = true;
     this.isEditing = false;
     this.editingIndex = null;
+    this.userForm.reset(); //重設表單這樣就可以清空所有資料呈現一個全新的表單
   }
 
-  //submitAddUserForm() 方法用於提交新增使用者表單，將新使用者資料添加到資料庫中，然後重新載入使用者資料。
+  // 在 addUser()、updateUser() 方法中對用戶輸入的值進行清理，避免潛在的 HTML 注入
+
   submitAddUserForm() {
     const user = this.userForm.value;
-    this.userService.addUser(user);
-    this.showAddUserForm = false;
-    this.userForm.reset();
-    this.loadUsers();
+    if (this.userService.isEmailExists(user.email)) { // Check if email already exists
+      alert('哈哈！這 email 被搶走了！再試一個吧！');
+    } else {
+      this.userService.addUser(user);
+      this.showAddUserForm = false;
+      this.userForm.reset();
+      this.loadUsers();
+    }
   }
 
   //editUser() 方法用於將選定的使用者資料填入編輯表單中，並將標誌設置為編輯模式
@@ -97,11 +108,18 @@ export class UserlistComponent implements OnInit {
     }
   }
 
+
+  // 舊有的方法
   //deleteUser() 方法用於刪除指定索引位置的使用者資料後，再重新載入使用者資料。這樣做是為了保持元件中顯示的使用者清單與資料庫中的資料同步。
+  
   deleteUser(index: number) {
     this.userService.deleteUser(index);
     this.loadUsers();
   }
+
+
+
+
 
   //calculateTotalSalary() 方法用於計算所有使用者的總薪水
   calculateTotalSalary() {

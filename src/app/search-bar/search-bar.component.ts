@@ -19,5 +19,10 @@ export class SearchBarComponent implements OnInit {
   searchUsers(): void {
      this.search.emit(this.searchTerm);
   }
+  
+  // 監聽輸入框的變化並發送搜尋事件
+  // onSearchChange(): void{
+  //   this.search.emit(this.searchTerm.trim());
+  // }
  }
  
