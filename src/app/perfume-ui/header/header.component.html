@@ -1,24 +1,39 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-flex justin" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-      </div>
+<nav class="py-4 position-relative">
+  <div class="container">
+    <div class="row justify-content-between">
+      <h1 class="col col-md-6">
+        <a class="logo" href="javascript:;">D'PERFUME</a>
+      </h1>
+
+      <!-- 手機出現導航 -->
+      <ul class="nav_m-menu col d-flex justify-content-end d-md-none">
+        <li class="position-relative">
+          <a class="shop_icon" href="javascript:;">
+            <span class="material-icons c_gray">shopping_cart</span>
+            <span class="position-absolute top-0 start-100 translate-middle notify">1</span>
+          </a>
+        </li>
+        <li class="ms-5"><a href="javascript:;" (click)="toggleMenu()"><span class="material-icons c_gray">menu</span></a></li>
+      </ul>
+
+      <!-- 桌機出現導航 -->
+      <ul class="nav_pc_menu d-none col-md-6 d-md-flex justify-content-md-end align-items-md-center">
+        <li class="pb-1"><a class="d-flex align-items-center c_ms_32 c_gray" href="javascript:;"><span class="material-icons c_me">store</span>Product</a></li>
+        <li class="pb-1"><a class="d-flex align-items-center c_ms_32 c_gray" href="javascript:;"><span class="material-icons c_me">person</span>log in</a></li>
+        <li class="pb-1"><a class="d-flex align-items-center c_ms_32 c_gray" href="javascript:;"><span class="material-icons c_me">favorite</span>Wishlist</a></li>
+        <li class="pb-1"><a class="d-flex align-items-center c_ms_32 c_gray" href="javascript:;"><span class="material-icons c_me">shopping_cart</span>Cart(3)</a></li>
+      </ul>
     </div>
-  </nav> -->
+  </div>
+</nav>
+
+<!-- 手機出現導航選單 -->
+<div class="menu position-absolute w-100 d-md-none" *ngIf="isShowMenu" [ngClass]="{'fade-in':isShowMenu}">
+  <ul>
+    <li class="py-3 text-center border-bottom border-light border-2"><a href="javascript:;" class="fs-20">Product</a></li>
+    <li class="py-3 text-center border-bottom border-light border-2"><a href="javascript:;" class="fs-20">Wishlist</a></li>
+    <li class="py-3 text-center border-bottom border-light border-2"><a href="javascript:;" class="fs-20">Blog</a></li>
+    <li class="py-3 text-center border-bottom border-light border-2"><a href="javascript:;" class="fs-20">Contact</a></li>
+    <li class="py-3 text-center"><a href="javascript:;" class="fs-20">log in</a></li>
+  </ul>
+</div>

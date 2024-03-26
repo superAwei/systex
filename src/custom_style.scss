@@ -1,0 +1,102 @@
+// 顏色變數
+$primary: #916000;
+$secondary:#AC8A46;
+$gray:#8D8D8D;
+
+
+//間距變數
+$xss-space:4px;
+$sm-space:20px;
+$xs-space:32px;
+$m-space:36px;
+$s-space:40px;
+$l-space:52px;
+$x-space:60px;
+
+//文字大小
+$font-smail:14px;
+$font-m:20px;
+
+
+.fs-7{
+	font-size:$font-smail;
+}
+
+.fs-20{
+	font-size:$font-m;
+}
+
+.c_ms_32{
+	margin-left: 32px;
+}
+
+
+.c_primary{
+	background-color:$primary;
+}
+
+.c_secondary{
+	color: $secondary;
+}
+
+.c_gray{
+	color:$gray;
+}
+.c_b_gray{
+	color: $gray;
+}
+
+
+// 客製化間距
+.c_py{
+	padding-top:$s-space;
+	padding-bottom:$s-space;
+	@media (min-width:540px) {
+		padding-top:$x-space;
+	    padding-bottom:$x-space;
+	}
+}
+
+
+.c_s_py{
+	padding-top:$xs-space;
+	padding-bottom:$xs-space;
+	@media (min-width:540px) {
+		padding-top:$s-space;
+	    padding-bottom:$s-space;
+	}
+}
+
+.c_me{
+	margin-right: $xss-space;
+}
+
+.c_ml_36{
+	margin-left: $m-space;
+}
+
+.c_mb{
+	margin-bottom: $xs-space;
+}
+
+
+.c_mb_20_52{
+	margin-bottom: $sm-space;
+	@media (min-width:540px) {
+		margin-bottom:$l-space;
+	}
+}
+
+.c_text_20_24{
+	font-size: 20px;
+	@media (min-width:540px) {
+		font-size: 24px;
+	}
+}
+
+.c_text_32_40{
+	font-size: 32px;
+	@media (min-width:540px) {
+		font-size: 40px;
+	}
+}
