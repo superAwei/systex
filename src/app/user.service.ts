@@ -13,7 +13,7 @@ export class UserService {
     throw new Error('Method not implemented.');
   }
   private users: any[] = [
-    { name: 'email', country: '彰化', salary: 1000, email: 'user1@example.com' },
+    { name: 'Tim', country: '', salary: 1000, email: 'user1@example.com' },
     { name: 'awei', country: '新莊', salary: 2000, email: 'user2@example.com' },
     { name: 'jack', country: '大陸', salary: 3000, email: 'user3@example.com' },
     { name: 'marry', country: '台中', salary: 1000, email: 'user4@example.com' },

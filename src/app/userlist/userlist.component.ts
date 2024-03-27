@@ -3,7 +3,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 //把共用資料也導入進來
 import { UserService } from '../user.service';
-;
+
 
 
 // 建立元件
@@ -15,7 +15,7 @@ import { UserService } from '../user.service';
 
 // 把元件分享出去
 //implements OnInit 表示這個類別實現了 OnInit 介面，因此它必須實作 ngOnInit() 方法。
-//宣告了 users、showAddUserForm、userForm、isEditing、editingIndex 和 totalSalary 
+//宣告了 users、showAddUserForm、userForm、isEditing、editingIndex 和 totalSalary 和  searchTerm 主要存放會調用的資料
 export class UserlistComponent implements OnInit {
   users: any[] = [];   //用於存儲使用者資料
   showAddUserForm: boolean = false;  //控制新增使用者表單的顯示
@@ -76,6 +76,7 @@ export class UserlistComponent implements OnInit {
 
   // 在 addUser()、updateUser() 方法中對用戶輸入的值進行清理，避免潛在的 HTML 注入
 
+  // 新增使用者到表單
   submitAddUserForm() {
     const user = this.userForm.value;
     if (this.userService.isEmailExists(user.email)) { // Check if email already exists
@@ -109,11 +110,15 @@ export class UserlistComponent implements OnInit {
   }
 
 
-  // 舊有的方法
-  //deleteUser() 方法用於刪除指定索引位置的使用者資料後，再重新載入使用者資料。這樣做是為了保持元件中顯示的使用者清單與資料庫中的資料同步。
-  
+  // 刪除使用者
   deleteUser(index: number) {
-    this.userService.deleteUser(index);
+    // 從搜尋後的使用者清單中找到要刪除的使用者,比方說搜尋後我找到小明的索引位置是 3
+    const userToDelete = this.users[index];
+    // 在原始的 users 陣列中找到要刪除的使用者索引位置
+    const originalIndex = this.userService.getUsers().indexOf(userToDelete);
+    // 然後把他原本所在的索引位置刪除
+    this.userService.deleteUser(originalIndex);
+    // this.userService.deleteUser(index);
     this.loadUsers();
   }
 
@@ -126,8 +131,10 @@ export class UserlistComponent implements OnInit {
     this.totalSalary = this.users.reduce((acc, user) => acc + user.salary, 0);
   }
 
+  // 顯示所有使用者
   showAllUsers() {
     this.loadUsers();
   }
 }
+
 

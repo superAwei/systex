@@ -13,6 +13,9 @@ export class SearchBarComponent implements OnInit {
  
   constructor(private userService: UserService) { }
  
+
+//，SearchBarComponent 類別實現了 OnInit 介面，因此必須實現 ngOnInit 方法。
+//就算沒有內容為了滿足接口需求還是要放一個空的 ngOnInit()
   ngOnInit(): void {
   }
  
@@ -20,9 +23,5 @@ export class SearchBarComponent implements OnInit {
      this.search.emit(this.searchTerm);
   }
   
-  // 監聽輸入框的變化並發送搜尋事件
-  // onSearchChange(): void{
-  //   this.search.emit(this.searchTerm.trim());
-  // }
  }
  
